@@ -54,7 +54,7 @@ jobs:
       #  with:
       #    creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'webapp-dotnet'
-        package: ./webapp
+    #- uses: azure/webapps-deploy@v2
+    #  with:
+    #    app-name: 'webapp-dotnet'
+    #    package: ./webapp
