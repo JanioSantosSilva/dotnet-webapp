@@ -2,23 +2,16 @@ name: 'Setup Java Composite'
 description: 'A reusable workflow for CI/CD tasks'
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - ${{ inputs.branches }}
-  pull_request:
-    branches:
-      - ${{ inputs.branches }}
-
-inputs:
-  branches:
-    description: 'Branches to trigger the workflow'
-    required: true
-    type: string
-  java-version:
-    description: 'Java version to setup'
-    required: true
-    type: string
+  workflow_call:
+    inputs:
+      branches:
+        description: 'Branches to trigger the workflow'
+        required: true
+        type: string
+      java-version:
+        description: 'Java version to setup'
+        required: true
+        type: string
 
 runs:
   using: 'composite'
@@ -42,3 +35,4 @@ runs:
     
     - name: Verify Java version
       run: java -version
+
