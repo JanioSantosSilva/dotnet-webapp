@@ -2,21 +2,15 @@ name: 'Setup Java and Ant'
 description: 'Setup Java and Ant for the project'
 author: 'Janio Santos Silva'
 
-branding:
-  icon: 'tool'
-  color: 'blue'
 
 inputs:
- java-version:
-   description: 'Java version to setup'
-   required: true
-   type: string
-   default: '1.5'
- ant-version:
-  description: 'Apache Ant version to install'
-  required: true
-  type: string
-  default: '1.8.4'
+  java-version:
+    description: 'Java version to setup'
+    required: true
+  ant-version:
+     description: 'Apache Ant version to install'
+     required: true
+     default: '1.8.4'
 
 runs:
   using: composite
