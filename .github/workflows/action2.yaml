@@ -11,6 +11,10 @@ on:
         description: 'Java version to setup'
         required: true
         type: string
+      ant-version:
+        description: 'Apache Ant version to install'
+        required: true
+        type: string
 
 jobs:
   setup-java:
@@ -35,4 +39,22 @@ jobs:
       
       - name: Verify Java version
         run: java -version
+      
+      - name: Install Apache Ant
+        run: |
+          wget https://archive.apache.org/dist/ant/binaries/apache-ant-${{ inputs.ant-version }}-bin.tar.gz \
+          && tar -xzf ./apache-ant-${{ inputs.ant-version }}-bin.tar.gz -C /opt/ \
+          && ln -s /opt/apache-ant-${{ inputs.ant-version }} /opt/ant 
+
+      - name: Update PATH with Ant
+        run: |
+          echo "ANT_HOME=/opt/ant" >> $GITHUB_ENV
+          echo "PATH=$PATH:$ANT_HOME/bin" >> $GITHUB_ENV
+
+      - name: Verify Ant version
+        run: ant -version
+      
+      - name: Build with Ant
+        run: |
+          ant clean compile
 
