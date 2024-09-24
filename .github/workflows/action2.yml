@@ -1,5 +1,4 @@
 name: 'Setup Java Composite'
-description: 'A reusable workflow for CI/CD tasks'
 
 on:
   workflow_call:
@@ -13,26 +12,27 @@ on:
         required: true
         type: string
 
-runs:
-  using: 'composite'
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+jobs:
+  setup-java:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Download and tar java 5 file
-      run: |
-        chmod +x jdk-1_5_0_22-linux-amd64.bin 
-        ./jdk-1_5_0_22-linux-amd64.bin > /dev/null < <(echo yes)
-        tar -czf java-package.tar.gz ./jdk1.5.0_22
+      - name: Download and tar java 5 file
+        run: |
+          chmod +x jdk-1_5_0_22-linux-amd64.bin 
+          ./jdk-1_5_0_22-linux-amd64.bin > /dev/null < <(echo yes)
+          tar -czf java-package.tar.gz ./jdk1.5.0_22
 
-    - name: Setup Java 5 using tar file
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'jdkfile'
-        java-version: ${{ inputs.java-version }}
-        jdkFile: ${{ github.workspace }}/java-package.tar.gz
-        architecture: x64
-    
-    - name: Verify Java version
-      run: java -version
+      - name: Setup Java 5 using tar file
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'jdkfile'
+          java-version: ${{ inputs.java-version }}
+          jdkFile: ${{ github.workspace }}/java-package.tar.gz
+          architecture: x64
+      
+      - name: Verify Java version
+        run: java -version
 
