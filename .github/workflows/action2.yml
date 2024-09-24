@@ -9,16 +9,16 @@ on:
   pull_request:
     branches:
       - ${{ inputs.branches }}
-  inputs:
-    branches:
-      description: 'Branches to trigger the workflow'
-      required: true
-      type: string
-    java-version:
-      description: 'Java version to setup'
-      required: true
-      type: string
-     
+
+inputs:
+  branches:
+    description: 'Branches to trigger the workflow'
+    required: true
+    type: string
+  java-version:
+    description: 'Java version to setup'
+    required: true
+    type: string
 
 runs:
   using: 'composite'
