@@ -1,0 +1,68 @@
+name: 'Setup Java and Ant'
+description: 'Setup Java and Ant for the project'
+author: 'Janio Santos Silva'
+
+branding:
+  icon: 'tool'
+  color: 'blue'
+
+inputs:
+ java-version:
+   description: 'Java version to setup'
+   required: true
+   type: string
+   default: '1.5'
+ ant-version:
+  description: 'Apache Ant version to install'
+  required: true
+  type: string
+  default: '1.8.4'
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+        fetch-depth: 0
+
+    - name: Download and extract Java 5 file
+      shell: bash
+      run: |
+        chmod +x jdk-1_5_0_22-linux-amd64.bin
+        ./jdk-1_5_0_22-linux-amd64.bin > /dev/null < <(echo yes)
+        tar -czf java-package.tar.gz ./jdk1.5.0_22
+
+    - name: Setup Java 5 using tar file
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'jdkfile'
+        java-version: ${{ inputs.java-version }}
+        jdkFile: ${{ github.workspace }}/java-package.tar.gz
+        architecture: x64
+
+    - name: Verify Java version
+      shell: bash
+      run: java -version
+
+    - name: Install Apache Ant
+      shell: bash
+      run: |
+        wget https://archive.apache.org/dist/ant/binaries/apache-ant-${{ inputs.ant-version }}-bin.tar.gz
+        && tar -xzf ./apache-ant-${{ inputs.ant-version }}-bin.tar.gz -C /opt/
+        && ln -s /opt/apache-ant-${{ inputs.ant-version }} /opt/ant
+
+    - name: Update PATH with Ant
+      shell: bash
+      run: |
+        echo "ANT_HOME=/opt/ant" >> $GITHUB_ENV
+        echo "PATH=$PATH:$ANT_HOME/bin" >> $GITHUB_ENV
+
+    - name: Verify Ant version
+      shell: bash
+      run: ant -version
+
+    - name: Build with Ant
+      shell: bash
+      run: ant clean compile
