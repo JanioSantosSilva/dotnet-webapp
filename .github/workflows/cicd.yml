@@ -1,0 +1,34 @@
+name: TEST COPY PATH
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Listar diretórios na raiz
+      run: |
+       echo "Listando todos os diretórios na raiz:"
+       ls -d */  # Lista diretórios na raiz
+    
+    - name: Listar todos os diretórios e subdiretórios
+      run: |
+       echo "Listando todos os diretórios e subdiretórios:"
+       find . -type d
+    
+    - name: Procurar por pastas que contêm 'TESTE'
+      run: |
+       echo "Procurando por pastas que contêm 'TESTE':"
+       find . -type d | grep "TESTE"
+    
+    - name: Verificar estrutura de diretórios após checkout
+      run: |
+       echo "Estrutura de diretórios após checkout:"
+       ls -R
