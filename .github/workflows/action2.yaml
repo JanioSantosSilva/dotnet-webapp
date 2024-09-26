@@ -62,14 +62,12 @@ jobs:
           
       - name: Verificar o caminho
         run: |
-          CAMINHO_TESTE="./TESTE UNITÁRIO/Xml"
-          printf "Caminho: %s\n" "$CAMINHO_TESTE"
-          cat "$CAMINHO_TESTE/teste.txt"
+          CAMINHO_TESTE="../TESTE UNITÁRIO/Xml"
+          ARQUIVO=$(find "$CAMINHO_TESTE" -name "teste.txt")
+          printf "Arquivo encontrado: %s\n" "$ARQUIVO"
+          cat "$ARQUIVO"
         
-      - name: Ler conteúdo do arquivo de teste com caminho absoluto
-        run: |
-          CAMINHO_TESTE="${PWD}/../TESTE UNITÁRIO/Xml"
-          cat "$CAMINHO_TESTE/teste.txt"
+
         
 
 
