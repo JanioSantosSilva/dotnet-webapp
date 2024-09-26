@@ -1,0 +1,2 @@
+comando="ant -buildfile empacotamento/Ant/build.xml -Dempacotamento.caminho.pacote='teste.ear' -Dxml.dir=\"../TESTE UNITÁRIO/Xml\""
+run "$comando"

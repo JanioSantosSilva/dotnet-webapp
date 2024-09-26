@@ -1,7 +1,7 @@
 name: 'Setup Java and Ant'
 
 on:
-  workflow_call:
+  5
     inputs:
       branches:
         description: 'Branches to trigger the workflow'
@@ -59,4 +59,16 @@ jobs:
       - name: Build with Ant
         run: |
           ant clean compile
+
+      - name: Ler conteúdo do arquivo de teste
+        run: |
+          CAMINHO_TESTE="../TESTE UNITÁRIO/Xml"
+          cat "$CAMINHO_TESTE/teste.txt"
+
+
+     
+
+      
+   
+
 
