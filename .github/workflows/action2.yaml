@@ -62,7 +62,7 @@ jobs:
 
       - name: Ler conteúdo do arquivo de teste
         run: |
-          CAMINHO_TESTE="../TESTE UNITÁRIO/Xml"
+          CAMINHO_TESTE="../TESTE\ UNITÁRIO/Xml"
           cat "$CAMINHO_TESTE/teste.txt"
 
 
