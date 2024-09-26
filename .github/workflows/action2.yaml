@@ -60,20 +60,21 @@ jobs:
       #  run: |
       #    ant clean compile
 
-      - name: Listar diretórios que começam com "T"
+      - name: Listar todos os diretórios no projeto
         run: |
-         echo "Listando diretórios na raiz que começam com 'T':"
-         ls -d T*/
+          echo "Listando todos os diretórios no projeto:"
+          find . -type d -name '*TESTE*'
       
-      - name: Listar diretórios no diretório raiz
-        run: |
-          echo "Listando diretórios no diretório raiz:"
-          ls -d /*/
-
       - name: Listar todos os diretórios no projeto
         run: |
           echo "Listando todos os diretórios no projeto:"
           find . -type d -print
+
+      - name: Exibir a estrutura de diretórios
+        run: |
+          echo "Exibindo a estrutura de diretórios:"
+          tree -d
+        
         
         
         
