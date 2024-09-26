@@ -60,10 +60,10 @@ jobs:
         run: |
           ant clean compile
           
-      - name: Verificar o caminho
+      - name: Teste COPY path
         run: |
-          CAMINHO_TESTE="../TESTE UNITÁRIO/Xml"
-          ARQUIVO=$(find "$CAMINHO_TESTE" -name "teste.txt")
+          CAMINHO_TESTE="../TESTE%20UNITÁRIO/Xml"
+          ARQUIVO=$(ls "$CAMINHO_TESTE/teste.txt")
           printf "Arquivo encontrado: %s\n" "$ARQUIVO"
           cat "$ARQUIVO"
         
