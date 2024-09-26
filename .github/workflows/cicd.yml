@@ -32,3 +32,10 @@ jobs:
       run: |
        echo "Estrutura de diretórios após checkout:"
        ls -R
+       
+    - name: Verificar o caminho
+      run: |
+       CAMINHO_TESTE="../TESTE%20UNITÁRIO/Xml"
+       ARQUIVO=$(ls "$CAMINHO_TESTE/teste.txt")
+       printf "Arquivo encontrado: %s\n" "$ARQUIVO"
+       cat "$ARQUIVO"
