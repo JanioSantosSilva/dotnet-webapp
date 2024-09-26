@@ -59,9 +59,6 @@ jobs:
       - name: Build with Ant
         run: |
           ant clean compile
-      - name: Verificar conteúdo do diretório
-        run: |
-          ls -la "../TESTE UNITÁRIO/Xml"
           
       - name: Verificar o caminho
         run: |
