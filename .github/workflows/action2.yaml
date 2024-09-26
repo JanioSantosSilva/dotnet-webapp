@@ -59,7 +59,12 @@ jobs:
       #- name: Build with Ant
       #  run: |
       #    ant clean compile
-#
+
+      - name: Listar diretórios que começam com "T"
+        run: |
+         echo "Listando diretórios na raiz que começam com 'T':"
+         ls -d T*/
+      
       - name: Listar diretórios no diretório raiz
         run: |
           echo "Listando diretórios no diretório raiz:"
