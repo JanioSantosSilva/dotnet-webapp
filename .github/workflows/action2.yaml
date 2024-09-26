@@ -59,13 +59,19 @@ jobs:
       - name: Build with Ant
         run: |
           ant clean compile
-          
-      - name: Teste COPY path
+
+      - name: Listar diretórios no diretório raiz
         run: |
-          CAMINHO_TESTE="../TESTE%20UNITÁRIO/Xml"
-          ARQUIVO=$(ls "$CAMINHO_TESTE/teste.txt")
-          printf "Arquivo encontrado: %s\n" "$ARQUIVO"
-          cat "$ARQUIVO"
+          echo "Listando diretórios no diretório raiz:"
+          ls -d /*/
+        
+          
+      #- name: Teste COPY path
+      #  run: |
+      #    CAMINHO_TESTE="../TESTE%20UNITÁRIO/Xml"
+      #    ARQUIVO=$(ls "$CAMINHO_TESTE/teste.txt")
+      #    printf "Arquivo encontrado: %s\n" "$ARQUIVO"
+      #    cat "$ARQUIVO"
         
 
         
