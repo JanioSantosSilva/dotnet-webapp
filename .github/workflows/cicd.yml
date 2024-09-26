@@ -35,7 +35,11 @@ jobs:
 
     - name: Verificar o caminho
       run: |
-       CAMINHO_TESTE="../TESTE UNITÁRIO/Xml"
-       ARQUIVO=$(readlink -f "$CAMINHO_TESTE/teste.txt")
-       printf "Arquivo encontrado: %s\n" "$ARQUIVO"
-       cat "$ARQUIVO"
+       CAMINHO_XML=$(find . -type d -name "Xml" -path "*/TESTE UNITÁRIO/*" -print)
+       if [ -z "$CAMINHO_XML" ]; then
+           echo "Diretório 'TESTE UNITÁRIO/Xml' não encontrado."
+           exit 1
+         else
+           echo "Diretório encontrado: $CAMINHO_XML"
+           echo "::set-output name=caminho::$CAMINHO_XML"
+         fi
