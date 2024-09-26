@@ -60,20 +60,23 @@ jobs:
       #  run: |
       #    ant clean compile
 
-      - name: Listar todos os diretórios no projeto
+      # Listar todos os diretórios na raiz
+      - name: Listar diretórios na raiz
         run: |
-          echo "Listando todos os diretórios no projeto:"
-          find . -type d -name '*TESTE*'
-      
-      - name: Listar todos os diretórios no projeto
-        run: |
-          echo "Listando todos os diretórios no projeto:"
-          find . -type d -print
+          echo "Listando todos os diretórios na raiz:"
+          ls -d */  # Lista diretórios na raiz
 
-      - name: Exibir a estrutura de diretórios
+      # Listar todos os diretórios no projeto
+      - name: Listar todos os diretórios no projeto
         run: |
-          echo "Exibindo a estrutura de diretórios:"
-          tree -d
+          echo "Listando todos os diretórios no projeto:"
+          find . -type d  # Lista todos os diretórios recursivamente
+
+      # Procurar especificamente pela pasta TESTE UNITÁRIO
+      - name: Procurar pela pasta 'TESTE UNITÁRIO'
+        run: |
+          echo "Procurando por 'TESTE UNITÁRIO':"
+          find . -type d -name "TESTE UNITÁRIO"
         
         
         
