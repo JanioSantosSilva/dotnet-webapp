@@ -66,17 +66,23 @@ jobs:
           echo "Listando todos os diretórios na raiz:"
           ls -d */  # Lista diretórios na raiz
 
-      # Listar todos os diretórios no projeto
-      - name: Listar todos os diretórios no projeto
+      - name: Listar todos os diretórios e subdiretórios
         run: |
-          echo "Listando todos os diretórios no projeto:"
-          find . -type d  # Lista todos os diretórios recursivamente
+          echo "Listando todos os diretórios e subdiretórios:"
+          find . -type d
+      
+      - name: Procurar por pastas que contêm 'TESTE'
+        run: |
+         echo "Procurando por pastas que contêm 'TESTE':"
+         find . -type d | grep "TESTE"
 
-      # Procurar especificamente pela pasta TESTE UNITÁRIO
-      - name: Procurar pela pasta 'TESTE UNITÁRIO'
+      - name: Verificar estrutura de diretórios após checkout
         run: |
-          echo "Procurando por 'TESTE UNITÁRIO':"
-          find . -type d -name "TESTE UNITÁRIO" -print
+         echo "Estrutura de diretórios após checkout:"
+         ls -R
+       
+     
+        
         
         
         
