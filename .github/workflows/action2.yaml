@@ -60,7 +60,7 @@ jobs:
       #  run: |
       #    ant clean compile
 
-      # Listar todos os diretórios na raiz
+      # Listar todos os diretórios na
       - name: Listar diretórios na raiz
         run: |
           echo "Listando todos os diretórios na raiz:"
@@ -76,7 +76,7 @@ jobs:
       - name: Procurar pela pasta 'TESTE UNITÁRIO'
         run: |
           echo "Procurando por 'TESTE UNITÁRIO':"
-          find . -type d -name "TESTE UNITÁRIO"
+          find . -type d -name "TESTE UNITÁRIO" -print
         
         
         
