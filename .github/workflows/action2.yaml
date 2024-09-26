@@ -1,7 +1,7 @@
 name: 'Setup Java and Ant'
 
 on:
-  5
+  workflow_dispatch:
     inputs:
       branches:
         description: 'Branches to trigger the workflow'
